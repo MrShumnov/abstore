@@ -27,6 +27,10 @@ namespace Controller.Helper
 
                 switch (error)
                 {
+                    case ObjectNotFoundException:
+                        response.StatusCode = (int)HttpStatusCode.NotFound;
+                        break;
+
                     default:
                         response.StatusCode = (int)HttpStatusCode.InternalServerError;
                         break;

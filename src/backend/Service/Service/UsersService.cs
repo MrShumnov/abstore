@@ -31,32 +31,42 @@ namespace Service.Service
             return user.Role;
         }
 
-        public async Task<UserDto?> GetByIdAsync(int id)
+        public async Task<UserAdminDto?> GetByIdAsync(int id)
         {
             var user = await _usersRepository.GetByIdAsync(id);
 
-            return _mapper.Map<UserDto>(user);
+            return _mapper.Map<UserAdminDto>(user);
         }
 
-        public async Task<UserDto> CreateAsync(UserRequestDto dto)
+        public async Task<UserAdminDto> CreateAsync(UserRequestDto dto)
         {
             var entity = _mapper.Map<UserEntity>(dto);
+            entity.Role = RoleEnum.User;
 
             var created = await _usersRepository.AddAsync(entity);
 
-            return _mapper.Map<UserDto>(created);
+            return _mapper.Map<UserAdminDto>(created);
         }
 
-        public async Task<UserDto> UpdateAsync(UserDto dto)
+        public async Task<UserAdminDto> UpdateAsync(UserAdminDto dto)
         {
             var entity = _mapper.Map<UserEntity>(dto);
 
-            var updated = await _usersRepository.UpdateAsync(entity);
+            UserEntity updated;
 
-            return _mapper.Map<UserDto>(updated);
+            try
+            {
+                updated = await _usersRepository.UpdateAsync(entity);
+            }
+            catch (EntityNotExistsException)
+            {
+                throw new ObjectNotFoundException();
+            }
+
+            return _mapper.Map<UserAdminDto>(updated);
         }
 
-        public async Task<UserDto> RemoveAsync(int id)
+        public async Task<UserAdminDto> RemoveAsync(int id)
         {
             var entity = await _usersRepository.GetByIdAsync(id);
             if (entity == null)
@@ -64,7 +74,14 @@ namespace Service.Service
 
             var removed = await _usersRepository.RemoveAsync(entity);
 
-            return _mapper.Map<UserDto>(removed);
+            return _mapper.Map<UserAdminDto>(removed);
+        }
+
+        public async Task<List<UserAdminDto>> GetAllAsync()
+        {
+            var entities = await _usersRepository.GetAllAsync();
+
+            return _mapper.Map<List<UserAdminDto>>(entities);
         }
     }
 }

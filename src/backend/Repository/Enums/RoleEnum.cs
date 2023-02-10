@@ -8,7 +8,7 @@ namespace Repository.Enums
 {
     public enum RoleEnum
     {
-        user,
-        admin
+        User,
+        Admin
     }
 }

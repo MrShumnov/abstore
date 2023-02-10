@@ -9,6 +9,8 @@ namespace Service.Helper
         public MapperProfile()
         {
             CreateMap<UserEntity, UserDto>().ReverseMap();
+            CreateMap<UserEntity, UserAdminDto>().ReverseMap();
+            CreateMap<UserDto, UserAdminDto>().ReverseMap();
             CreateMap<OrderEntity, OrderDto>().ReverseMap();
             CreateMap<ProductEntity, ProductDto>().ReverseMap();
             CreateMap<OrderProductEntity, OrderItemDto>().ReverseMap();

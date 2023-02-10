@@ -3,7 +3,7 @@ using Repository.Enums;
 
 namespace Service.Dto
 {
-    public class UserDto
+    public class UserAdminDto
     {
         public int Id { get; set; }
 
