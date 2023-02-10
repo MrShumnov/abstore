@@ -1,0 +1,449 @@
+openapi: 3.0.3
+info:
+  title: ABstore API
+  description: 
+    This is a ABstore Server based on the OpenAPI 3.0 specification.
+  version: 1.0.11
+servers:
+  - url: /api/v1
+tags:
+  - name: products
+  - name: orders
+  - name: users
+  - name: authentication
+paths:
+  /products:
+    get:
+      tags:
+      - products
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductList'
+    post:
+      tags:
+      - products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          description: successful operation
+        '401':
+          description: Authorization required 
+        '403':
+          description: Forbidden (admin only)
+      
+  /products/{id}:
+    get:
+      tags:
+      - products
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Product not found
+    patch:
+      tags:
+      - products
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+        '404':
+          description: Product not found
+        '401':
+          description: Authorization required 
+        '403':
+          description: Forbidden (admin only)
+    delete:
+      tags:
+      - products
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+        '404':
+          description: Product not found
+        '401':
+          description: Authorization required 
+        '403':
+          description: Forbidden (admin only)
+  
+  /orders:
+    get:
+      tags:
+      - orders
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderList'
+        '401':
+          description: Authorization required 
+        '403':
+          description: Forbidden (admin only)
+    post:
+      tags:
+      - orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '200':
+          description: successful operation
+        '401':
+          description: Authorization required 
+        '403':
+          description: Forbidden (admin only)
+  
+  /orders/{id}:
+    get:
+      tags:
+      - orders
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: Order not found
+        '401':
+          description: Authorization required 
+    patch:
+      tags:
+      - orders
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+        '404':
+          description: Order not found
+        '401':
+          description: Authorization required 
+        '403':
+          description: Forbidden (admin only)
+    delete:
+      tags:
+      - orders
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+        '404':
+          description: Order not found
+        '401':
+          description: Authorization required 
+        '403':
+          description: Forbidden (admin only)
+          
+  /orders/{id}/products:
+    get:
+      tags:
+      - orders
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderItem'
+        '404':
+          description: Order not found
+        '401':
+          description: Authorization required 
+      
+  /users:
+    get:
+      tags:
+      - users
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserList'
+        '401':
+          description: Authorization required 
+        '403':
+          description: Forbidden (admin only)
+    post:
+      tags:
+      - users
+      requestBody:
+        $ref: '#/components/requestBodies/User'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  
+  /users/{id}:
+    get:
+      tags:
+      - users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+        '401':
+          description: Authorization required 
+    patch:
+      tags:
+      - users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+        '404':
+          description: User not found
+        '401':
+          description: Authorization required 
+        '403':
+          description: Forbidden (admin only)
+    delete:
+      tags:
+      - users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+        '404':
+          description: User not found
+        '401':
+          description: Authorization required 
+        '403':
+          description: Forbidden (admin only)
+          
+  /users/{id}/orders:
+    get:
+      tags:
+      - users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderList'
+        '401':
+          description: Authorization required 
+    
+  /authentication:
+    post:
+      tags:
+      - authentication
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1000
+        username:
+          type: string
+          example: fehguy
+    UserList:
+      type: object
+      description: Collection of users
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+            
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1000
+        user_id:
+          type: integer
+          example: 1000
+        text:
+          type: string
+          example: HELLO WORLD!
+        price:
+          type: number
+          example: 10.89
+        date:
+          type: string
+          format: date
+          example: '2023-02-10'
+    OrderList:
+      type: object
+      description: Collection of orders
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+            
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 10
+        symbol:
+          type: string
+          example: J
+        price:
+          type: number
+          example: 0.99
+        sale:
+          type: number
+          example: 0
+        description:
+          type: string
+          example: 10th letter of the alphabet
+    ProductList:
+      type: object
+      description: Collection of products
+      properties:
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+            
+    OrderItem:
+      type: object
+      properties:
+        product:
+          $ref: '#/components/schemas/Product'
+        qty:
+          type: integer
+          example: 2
+          
+  requestBodies:
+    User:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              username:
+                type: string
+                example: fehguy
+              login:
+                type: string
+                example: fehguy1996
+              password:
+                type: string
+                example: 1234
+    AuthenticationData:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              login:
+                type: integer
+                example: fehguy1996
+              password:
+                type: string
+                example: 1234
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      
+security:
+  - bearerAuth: []
+                
