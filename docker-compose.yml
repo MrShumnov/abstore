@@ -1,7 +1,30 @@
 version: '3.9'
 services:
   backend:
-      build: ./src/backend
-      volumes:
-        - .www:/var/www
+    build: ./src/Backend
+    ports:
+      - 6001
+    environment:
+      - ASPNETCORE_URLS=https://+:6001
+    volumes:
+      - .www:/var/www
+    networks:
+      - proxy_abstore_network
+
+  db:
+    image: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - proxy_abstore_network
+    environment:
+      POSTGRES_USER: edb
+      POSTGRES_PASSWORD: 1234 
+
+networks:
+  proxy_abstore_network:
+    name: abstore_network
+
+volumes:
+  db-data:
 
