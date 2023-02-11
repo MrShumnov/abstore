@@ -1,0 +1,7 @@
+version: '3.9'
+services:
+  backend:
+      build: ./src/backend
+      volumes:
+        - .www:/var/www
+
