@@ -85,7 +85,7 @@ namespace Service.Service
         {
             var entity = await _ordersRepository.GetByIdAsync(id);
             if (entity == null)
-                throw new ObjectNotFoundException($"User with id {id} not found.");
+                throw new ObjectNotFoundException($"Order with id {id} not found.");
 
             var removed = await _ordersRepository.RemoveAsync(entity);
 

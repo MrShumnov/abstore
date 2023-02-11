@@ -16,6 +16,17 @@ paths:
     get:
       tags:
       - products
+      parameters:
+        - in: query
+          name: letters
+          schema:
+            type: boolean
+          description: Get letters or punctuation mark only
+        - in: query
+          name: capitals
+          schema:
+            type: boolean
+          description: Get capital letters only
       responses:
         '200':
           description: successful operation
@@ -27,11 +38,7 @@ paths:
       tags:
       - products
       requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Product'
+        $ref: '#/components/requestBodies/ProductRequest'
       responses:
         '200':
           description: successful operation
@@ -68,6 +75,12 @@ paths:
           required: true
           schema:
             type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
       responses:
         '200':
           description: successful operation
@@ -115,11 +128,7 @@ paths:
       tags:
       - orders
       requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Order'
+        $ref: '#/components/requestBodies/OrderRequest'
       responses:
         '200':
           description: successful operation
@@ -158,6 +167,12 @@ paths:
           required: true
           schema:
             type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
       responses:
         '200':
           description: successful operation
@@ -227,7 +242,7 @@ paths:
       tags:
       - users
       requestBody:
-        $ref: '#/components/requestBodies/User'
+        $ref: '#/components/requestBodies/UserRequest'
       responses:
         '200':
           description: successful operation
@@ -266,6 +281,12 @@ paths:
           required: true
           schema:
             type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
       responses:
         '200':
           description: successful operation
@@ -318,6 +339,17 @@ paths:
     post:
       tags:
       - authentication
+      parameters:
+        - name: login
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: header
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: successful operation
@@ -325,6 +357,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+        '401':
+          description: invalid credentials
+        
           
 components:
   schemas:
@@ -411,7 +446,7 @@ components:
           example: 2
           
   requestBodies:
-    User:
+    UserRequest:
       content:
         application/json:
           schema:
@@ -426,18 +461,37 @@ components:
               password:
                 type: string
                 example: 1234
-    AuthenticationData:
+    OrderRequest:
       content:
         application/json:
           schema:
             type: object
             properties:
-              login:
+              user_id:
                 type: integer
-                example: fehguy1996
-              password:
+                example: 1000
+              products:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+    ProductRequest:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              symbol:
                 type: string
-                example: 1234
+                example: C
+              price:
+                type: number
+                example: 0.99
+              sale:
+                type: number
+                example: 0.55
+              description:
+                type: string
+                example: 3rd letter of the alphabet
   securitySchemes:
     bearerAuth:
       type: http

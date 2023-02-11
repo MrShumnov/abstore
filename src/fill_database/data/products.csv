@@ -1,55 +1,55 @@
-1,a,0.99,0,Letter №1 of the alphabet!,2023-02-10,2023-02-10
-2,A,0.99,0,Letter №1 of the alphabet!,2023-02-10,2023-02-10
-3,b,0.99,0,Letter №3 of the alphabet!,2023-02-10,2023-02-10
-4,B,0.99,0,Letter №3 of the alphabet!,2023-02-10,2023-02-10
-5,c,0.99,0,Letter №5 of the alphabet!,2023-02-10,2023-02-10
-6,C,0.99,0,Letter №5 of the alphabet!,2023-02-10,2023-02-10
-7,d,0.99,0,Letter №7 of the alphabet!,2023-02-10,2023-02-10
-8,D,0.99,0,Letter №7 of the alphabet!,2023-02-10,2023-02-10
-9,e,0.99,0,Letter №9 of the alphabet!,2023-02-10,2023-02-10
-10,E,0.99,0,Letter №9 of the alphabet!,2023-02-10,2023-02-10
-11,f,0.99,0,Letter №11 of the alphabet!,2023-02-10,2023-02-10
-12,F,0.99,0,Letter №11 of the alphabet!,2023-02-10,2023-02-10
-13,g,0.99,0,Letter №13 of the alphabet!,2023-02-10,2023-02-10
-14,G,0.99,0,Letter №13 of the alphabet!,2023-02-10,2023-02-10
-15,h,0.99,0,Letter №15 of the alphabet!,2023-02-10,2023-02-10
-16,H,0.99,0,Letter №15 of the alphabet!,2023-02-10,2023-02-10
-17,i,0.99,0,Letter №17 of the alphabet!,2023-02-10,2023-02-10
-18,I,0.99,0,Letter №17 of the alphabet!,2023-02-10,2023-02-10
-19,j,0.99,0,Letter №19 of the alphabet!,2023-02-10,2023-02-10
-20,J,0.99,0,Letter №19 of the alphabet!,2023-02-10,2023-02-10
-21,k,0.99,0,Letter №21 of the alphabet!,2023-02-10,2023-02-10
-22,K,0.99,0,Letter №21 of the alphabet!,2023-02-10,2023-02-10
-23,l,0.99,0,Letter №23 of the alphabet!,2023-02-10,2023-02-10
-24,L,0.99,0,Letter №23 of the alphabet!,2023-02-10,2023-02-10
-25,m,0.99,0,Letter №25 of the alphabet!,2023-02-10,2023-02-10
-26,M,0.99,0,Letter №25 of the alphabet!,2023-02-10,2023-02-10
-27,n,0.99,0,Letter №27 of the alphabet!,2023-02-10,2023-02-10
-28,N,0.99,0,Letter №27 of the alphabet!,2023-02-10,2023-02-10
-29,o,0.99,0,Letter №29 of the alphabet!,2023-02-10,2023-02-10
-30,O,0.99,0,Letter №29 of the alphabet!,2023-02-10,2023-02-10
-31,p,0.99,0,Letter №31 of the alphabet!,2023-02-10,2023-02-10
-32,P,0.99,0,Letter №31 of the alphabet!,2023-02-10,2023-02-10
-33,q,0.99,0,Letter №33 of the alphabet!,2023-02-10,2023-02-10
-34,Q,0.99,0,Letter №33 of the alphabet!,2023-02-10,2023-02-10
-35,r,0.99,0,Letter №35 of the alphabet!,2023-02-10,2023-02-10
-36,R,0.99,0,Letter №35 of the alphabet!,2023-02-10,2023-02-10
-37,s,0.99,0,Letter №37 of the alphabet!,2023-02-10,2023-02-10
-38,S,0.99,0,Letter №37 of the alphabet!,2023-02-10,2023-02-10
-39,t,0.99,0,Letter №39 of the alphabet!,2023-02-10,2023-02-10
-40,T,0.99,0,Letter №39 of the alphabet!,2023-02-10,2023-02-10
-41,u,0.99,0,Letter №41 of the alphabet!,2023-02-10,2023-02-10
-42,U,0.99,0,Letter №41 of the alphabet!,2023-02-10,2023-02-10
-43,v,0.99,0,Letter №43 of the alphabet!,2023-02-10,2023-02-10
-44,V,0.99,0,Letter №43 of the alphabet!,2023-02-10,2023-02-10
-45,w,0.99,0,Letter №45 of the alphabet!,2023-02-10,2023-02-10
-46,W,0.99,0,Letter №45 of the alphabet!,2023-02-10,2023-02-10
-47,x,0.99,0,Letter №47 of the alphabet!,2023-02-10,2023-02-10
-48,X,0.99,0,Letter №47 of the alphabet!,2023-02-10,2023-02-10
-49,y,0.99,0,Letter №49 of the alphabet!,2023-02-10,2023-02-10
-50,Y,0.99,0,Letter №49 of the alphabet!,2023-02-10,2023-02-10
-51,z,0.99,0,Letter №51 of the alphabet!,2023-02-10,2023-02-10
-52,Z,0.99,0,Letter №51 of the alphabet!,2023-02-10,2023-02-10
-53, ,0,0,Just a regular space,2023-02-10,2023-02-10
-54,",",1.99,0,Indispensable comma!,2023-02-10,2023-02-10
-55,.,9.99,0,Finish your thought with a full point!,2023-02-10,2023-02-10
+a,0.99,0,"Letter №1 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+A,0.99,0,"Letter №1 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+b,0.99,0,"Letter №2 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+B,0.99,0,"Letter №2 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+c,0.99,0,"Letter №3 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+C,0.99,0,"Letter №3 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+d,0.99,0,"Letter №4 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+D,0.99,0,"Letter №4 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+e,0.99,0,"Letter №5 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+E,0.99,0,"Letter №5 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+f,0.99,0,"Letter №6 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+F,0.99,0,"Letter №6 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+g,0.99,0,"Letter №7 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+G,0.99,0,"Letter №7 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+h,0.99,0,"Letter №8 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+H,0.99,0,"Letter №8 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+i,0.99,0,"Letter №9 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+I,0.99,0,"Letter №9 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+j,0.99,0,"Letter №10 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+J,0.99,0,"Letter №10 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+k,0.99,0,"Letter №11 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+K,0.99,0,"Letter №11 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+l,0.99,0,"Letter №12 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+L,0.99,0,"Letter №12 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+m,0.99,0,"Letter №13 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+M,0.99,0,"Letter №13 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+n,0.99,0,"Letter №14 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+N,0.99,0,"Letter №14 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+o,0.99,0,"Letter №15 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+O,0.99,0,"Letter №15 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+p,0.99,0,"Letter №16 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+P,0.99,0,"Letter №16 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+q,0.99,0,"Letter №17 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+Q,0.99,0,"Letter №17 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+r,0.99,0,"Letter №18 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+R,0.99,0,"Letter №18 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+s,0.99,0,"Letter №19 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+S,0.99,0,"Letter №19 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+t,0.99,0,"Letter №20 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+T,0.99,0,"Letter №20 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+u,0.99,0,"Letter №21 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+U,0.99,0,"Letter №21 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+v,0.99,0,"Letter №22 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+V,0.99,0,"Letter №22 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+w,0.99,0,"Letter №23 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+W,0.99,0,"Letter №23 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+x,0.99,0,"Letter №24 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+X,0.99,0,"Letter №24 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+y,0.99,0,"Letter №25 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+Y,0.99,0,"Letter №25 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+z,0.99,0,"Letter №26 of the alphabet, lowercase, reasonably priced!",2023-02-10,2023-02-10
+Z,0.99,0,"Letter №26 of the alphabet, uppercase, reasonably priced!",2023-02-10,2023-02-10
+ ,0,0,Just a regular space,2023-02-10,2023-02-10
+",",1.99,0,Indispensable comma!,2023-02-10,2023-02-10
+.,9.99,0,Finish your thought with a full point!,2023-02-10,2023-02-10
