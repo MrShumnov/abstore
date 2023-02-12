@@ -3,8 +3,16 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-nginx/
-!*/nginx/conf/nginx.conf
+/nginx/nginx.exe
+/nginx/contrib/
+/nginx/docs/
+/nginx/logs/
+/nginx/temp/
+/nginx/conf/*
+
+!/nginx/conf/nginx.conf
+
+db_data/
 
 # User-specific files
 *.rsuser

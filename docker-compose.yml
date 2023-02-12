@@ -3,28 +3,48 @@ services:
   backend:
     build: ./src/Backend
     ports:
-      - 6001
+      - 5001:5001
     environment:
-      - ASPNETCORE_URLS=https://+:6001
-    volumes:
-      - .www:/var/www
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:5001
+      # - ASPNETCORE_HTTPS_PORT=5001
+      # - ASPNETCORE_Kestrel__Certificates__Default__Password=1234
+      # - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - DB_CONNECTION_STRING=Host=db; Port=5432; Database=abstore; Username=abstore_user; Password=1234
+      
+      - LISTENPORT=5001
+    # volumes:
+      # - ~/.aspnet/https:/https:ro
     networks:
       - proxy_abstore_network
 
   db:
     image: postgres
+    ports:
+      - "5432"
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - ./db_data:/var/lib/postgresql/data
     networks:
       - proxy_abstore_network
     environment:
-      POSTGRES_USER: edb
-      POSTGRES_PASSWORD: 1234 
+      POSTGRES_USER: "abstore_user"
+      POSTGRES_PASSWORD: "1234"
+      POSTGRES_DB: "abstore"
+
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: 1234
+    ports:
+      - "5050:80"
+    volumes:
+      - ./pgadmin/servers.json:/pgadmin4/servers.json
+    networks:
+      - proxy_abstore_network
 
 networks:
   proxy_abstore_network:
     name: abstore_network
-
-volumes:
-  db-data:
-

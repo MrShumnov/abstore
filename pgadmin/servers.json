@@ -1,0 +1,14 @@
+{
+    "Servers": {
+      "1": {
+        "Name": "abstore",
+        "Group": "Servers",
+        "Host": "db",
+        "Port": 5432,
+        "MaintenanceDB": "abstore",
+        "Username": "abstore_user",
+        "Password": "1234",
+        "SSLMode": "prefer"
+      }
+    }
+  }
