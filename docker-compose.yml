@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   backend: &backend-main
-    build: ./src/Backend
+    build: ./Backend
     ports:
       - 5000-5001:5000
     environment:
@@ -23,17 +23,17 @@ services:
       - LISTENPORT=5000
     deploy:
       replicas: 2
-
+      
   db:
     image: postgres
     ports:
       - "5432"
     volumes:
       - ./db_data:/var/lib/postgresql/data
-      - ./src/sql/docker_create_db.sql:/docker-entrypoint-initdb.d/01.sql
-      - ./src/sql/docker_fill_db.sql:/docker-entrypoint-initdb.d/02.sql
-      - ./src/sql/docker_create_roles.sql:/docker-entrypoint-initdb.d/03.sql
-      - ./src/sql/data:/var/db/data
+      - ./sql/docker_create_db.sql:/docker-entrypoint-initdb.d/01.sql
+      - ./sql/docker_fill_db.sql:/docker-entrypoint-initdb.d/02.sql
+      - ./sql/docker_create_roles.sql:/docker-entrypoint-initdb.d/03.sql
+      - ./sql/data:/var/db/data
     networks:
       - proxy-abstore-network
     environment:
