@@ -9,7 +9,7 @@ namespace Repository.Context
     {
         public PostgreSQLContext(DbContextOptions<PostgreSQLContext> options) : base(options)
         {
-            Database.EnsureCreated();
+            // Database.EnsureCreated();
         }
     }
 }

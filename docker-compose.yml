@@ -1,22 +1,28 @@
 version: '3.9'
 services:
-  backend:
+  backend: &backend-main
     build: ./src/Backend
     ports:
-      - 5001:5001
+      - 5000-5001:5000
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://0.0.0.0:5001
-      # - ASPNETCORE_HTTPS_PORT=5001
-      # - ASPNETCORE_Kestrel__Certificates__Default__Password=1234
-      # - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
-      - DB_CONNECTION_STRING=Host=db; Port=5432; Database=abstore; Username=abstore_user; Password=1234
-      
-      - LISTENPORT=5001
-    # volumes:
-      # - ~/.aspnet/https:/https:ro
+      - DB_CONNECTION_STRING=Host=db; Port=5432; Database=abstore; Username=abstore_rw; Password=1234
+      - LISTENPORT=5000
     networks:
-      - proxy_abstore_network
+      - proxy-abstore-network
+    deploy:
+      replicas: 2
+
+  backend-readonly: &backend-1
+    <<: *backend-main
+    ports:
+      - 5002-5003:5000
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DB_CONNECTION_STRING=Host=db; Port=5432; Database=abstore; Username=abstore_r; Password=1234
+      - LISTENPORT=5000
+    deploy:
+      replicas: 2
 
   db:
     image: postgres
@@ -24,8 +30,12 @@ services:
       - "5432"
     volumes:
       - ./db_data:/var/lib/postgresql/data
+      - ./src/sql/docker_create_db.sql:/docker-entrypoint-initdb.d/01.sql
+      - ./src/sql/docker_fill_db.sql:/docker-entrypoint-initdb.d/02.sql
+      - ./src/sql/docker_create_roles.sql:/docker-entrypoint-initdb.d/03.sql
+      - ./src/sql/data:/var/db/data
     networks:
-      - proxy_abstore_network
+      - proxy-abstore-network
     environment:
       POSTGRES_USER: "abstore_user"
       POSTGRES_PASSWORD: "1234"
@@ -43,8 +53,8 @@ services:
     volumes:
       - ./pgadmin/servers.json:/pgadmin4/servers.json
     networks:
-      - proxy_abstore_network
+      - proxy-abstore-network
 
 networks:
-  proxy_abstore_network:
-    name: abstore_network
+  proxy-abstore-network:
+    name: abstore-network
