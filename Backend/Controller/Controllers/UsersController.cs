@@ -10,7 +10,7 @@ namespace Controller.Controllers
 {
     [ApiController]
     [Route("api/users")]
-    public class UsersController : ControllerBase
+    public class UsersController : BaseController
     {
         private readonly ILogger<UsersController> _logger;
 
@@ -60,9 +60,35 @@ namespace Controller.Controllers
         }
 
         [Authorize(Roles = "User,Admin")]
+        [HttpGet("current")]
+        public async Task<IResult> GetCurrent()
+        {
+            var userId = GetUserId();
+            if (userId != null)
+            {
+                var result = await _usersService.GetByIdAsync(userId.Value);
+
+                if (result == null)
+                    return Results.NotFound();
+
+                if (HttpContext.User.IsInRole("Admin"))
+                    return Results.Ok(result);
+                else
+                    return Results.Ok(_mapper.Map<UserDto>(result));
+            }
+
+            return Results.Unauthorized();
+        }
+
+        [Authorize(Roles = "User,Admin")]
         [HttpGet("{id}")]
         public async Task<IResult> Get([FromRoute] int id)
         {
+            var userId = GetUserId();
+            if (HttpContext.User.IsInRole("User")
+                && id != userId)
+                return Results.Forbid();
+
             var result = await _usersService.GetByIdAsync(id);
 
             if (result == null)
@@ -83,10 +109,15 @@ namespace Controller.Controllers
             return Results.Ok(result);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "User,Admin")]
         [HttpGet("{id}/orders")]
         public async Task<IResult> GetOrders(int id)
         {
+            var userId = GetUserId();
+            if (_httpContextAccessor.HttpContext.User.IsInRole("User")
+                && id != userId)
+                return Results.Forbid();
+
             var result = await _ordersService.GetByUserIdAsync(id);
 
             return Results.Ok(result);

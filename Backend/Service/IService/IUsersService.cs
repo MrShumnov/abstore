@@ -5,7 +5,7 @@ namespace Service.IService
 {
     public interface IUsersService
     {
-        Task<RoleEnum?> CheckUser(string login, string password);
+        Task<UserAdminDto?> CheckUser(string login, string password);
 
         Task<List<UserAdminDto>> GetAllAsync();
 

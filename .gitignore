@@ -359,3 +359,22 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+
+
+
+
+
+# react
+
+/node_modules
+/.pnp
+.pnp.js
+package-lock.json
+
+/coverage
+
+/build
+
+npm-debug.log*
+

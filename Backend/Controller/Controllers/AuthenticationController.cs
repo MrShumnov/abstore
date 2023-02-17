@@ -6,11 +6,12 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Service.IService;
+using Service.Dto;
 
 namespace Chamomile.Controllers
 {
     [ApiController]
-    [Route("api/authentication")]
+    [Route("api/auth")]
     public class AuthenticationController : ControllerBase
     {
         private readonly ILogger<AuthenticationController> _logger;
@@ -26,23 +27,24 @@ namespace Chamomile.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("")]
-        public async Task<IResult> Post(string userName, string password)
+        [HttpPost]
+        public async Task<IResult> Post(AuthDto dto)
         {
-            var role = await _usersRepository.CheckUser(userName, password);
+            var user = await _usersRepository.CheckUser(dto.Login, dto.Password);
 
-            if (role != null)
+            if (user != null)
             {
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new[]
                     {
-                        new Claim(ClaimTypes.Role, role.Value.ToString()),
-                        new Claim(JwtRegisteredClaimNames.Sub, userName),
-                        new Claim(JwtRegisteredClaimNames.Email, password),
+                        new Claim(ClaimTypes.Role, user.Role.ToString()),
+                        new Claim("UserId", user.Id.ToString()),
+                        new Claim(JwtRegisteredClaimNames.Sub, dto.Login),
+                        new Claim(JwtRegisteredClaimNames.Email, dto.Password),
                      }),
 
-                    Expires = DateTime.UtcNow.AddMinutes(5),
+                    Expires = DateTime.UtcNow.AddMinutes(10),
                     Issuer = _configuration["Jwt:Issuer"],
                     Audience = _configuration["Jwt:Audience"],
                     SigningCredentials = new SigningCredentials(

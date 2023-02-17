@@ -20,7 +20,7 @@ namespace Service.Service
             _usersRepository = samplesRepository;
         }
 
-        public async Task<RoleEnum?> CheckUser(string login, string password)
+        public async Task<UserAdminDto?> CheckUser(string login, string password)
         {
             var user = (await _usersRepository.FindAsync(u => u.Login == login && u.Password == password))
                         .FirstOrDefault();
@@ -28,7 +28,7 @@ namespace Service.Service
             if (user == null)
                 return null;
 
-            return user.Role;
+            return _mapper.Map<UserAdminDto>(user);
         }
 
         public async Task<UserAdminDto?> GetByIdAsync(int id)

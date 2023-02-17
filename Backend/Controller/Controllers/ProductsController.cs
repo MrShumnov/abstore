@@ -8,7 +8,7 @@ namespace Controller.Controllers
 {
     [ApiController]
     [Route("api/products")]
-    public class ProductsController : ControllerBase
+    public class ProductsController : BaseController
     {
         private readonly ILogger<ProductsController> _logger;
 

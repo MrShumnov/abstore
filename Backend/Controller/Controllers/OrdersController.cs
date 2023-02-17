@@ -10,7 +10,7 @@ namespace Controller.Controllers
 {
     [ApiController]
     [Route("api/orders")]
-    public class OrdersController : ControllerBase
+    public class OrdersController : BaseController
     {
         private readonly ILogger<OrdersController> _logger;
 
@@ -44,6 +44,11 @@ namespace Controller.Controllers
         [HttpPost]
         public async Task<IResult> Post(OrderRequestDto dto)
         {
+            var userId = GetUserId();
+            if (_httpContextAccessor.HttpContext.User.IsInRole("User")
+                && dto.UserId != userId)
+                return Results.Forbid();
+
             var result = await _ordersService.CreateAsync(dto);
 
             return Results.Ok(_mapper.Map<OrderDto>(result));

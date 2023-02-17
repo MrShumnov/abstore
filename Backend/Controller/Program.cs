@@ -25,10 +25,22 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//var corsPolicy = "customCorsPolicy";
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy(name: corsPolicy,
+//                      builder =>
+//                      {
+//                          builder.AllowAnyOrigin();
+//                          builder.AllowAnyMethod();
+//                          builder.AllowAnyHeader();
+//                      });
+//});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c => {
@@ -106,6 +118,7 @@ builder.Services.AddDbContext<BaseContext, PostgreSQLContext>((serviceProvider, 
     //else
     //    dbContextBuilder.UseNpgsql(builder.Configuration["ConnectionStrings:Anonymous"]);
 });
+
 builder.Services.AddAutoMapper(typeof(MapperProfile));
 
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
@@ -121,10 +134,10 @@ var listenPort = Environment.GetEnvironmentVariable("LISTENPORT");
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(int.Parse(listenPort)); // , listenOptions =>
-    // {
-        // listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
-        // listenOptions.UseHttps();
-    // }); 
+                                                // {
+                                                // listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
+                                                // listenOptions.UseHttps();
+                                                // }); 
 });
 
 var app = builder.Build();
@@ -141,6 +154,8 @@ app.Logger.LogInformation(connectionString);
         options.RoutePrefix = string.Empty;
     });
 //}
+
+// app.UseCors(corsPolicy);
 
 app.UseHttpsRedirection();
 

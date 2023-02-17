@@ -8,11 +8,11 @@ Functionality:
 
 ## Use-Case Diagram 
 
-<img src="./doc/UseCaseDiagram.svg" width="80%">
+<img src="./doc/UseCaseDiagram.svg" width="50%">
 
 ## ER-Diagram
 
-<img src="./doc/ERDDiagram.svg" width="80%">
+<img src="./doc/ERDDiagram.svg" width="50%">
 
 ## ApacheBenchmark report
 

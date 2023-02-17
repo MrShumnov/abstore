@@ -1,0 +1,37 @@
+.product {
+    width: 18rem;
+    align-items: center;
+    margin: 10pt;
+    
+    .product-body {
+        align-items: center;
+    }
+
+    .symbol {
+        font-size: 10em;
+    }
+
+    .sale {
+        font-size: 1.2em;
+        margin: 3pt;
+        margin-bottom: 0pt;
+    }
+    
+    .price {
+        text-decoration: line-through;
+        font-size: 0.8em;
+        color: gray;
+
+        margin-top: 0pt;
+        margin-bottom: 8pt;
+    }
+}
+
+.qty-changer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}

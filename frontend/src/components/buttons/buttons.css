@@ -1,0 +1,44 @@
+.rect-button {
+    transition-duration: 0.2s;
+    background: white;
+    color: black;
+    border-color: black;
+    border-radius: 0px;
+    border-style: solid;
+
+    padding: 3pt;
+    padding-left: 10pt;
+    padding-right: 10pt;
+}
+
+.rect-button:hover {
+    background: black;
+    color: white;
+    border-color: black;
+}
+
+.rect-button:active {
+    background: black;
+    color: black;
+    border-color: black;
+}
+
+/* TEXT BUTTON */
+
+.text-button {
+    transition-duration: 0.2s;
+    background: transparent;
+    color: black;
+    border: 0;
+    border-radius: 0px;
+
+    padding: 0.0em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+
+    margin: 0.5em;
+}
+
+.text-button:hover {
+    
+}
