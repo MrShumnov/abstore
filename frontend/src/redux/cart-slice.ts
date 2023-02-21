@@ -53,11 +53,15 @@ export const cartSlice = createSlice({
                 index = state.items.length - 1 - index;
                 state.items.splice(index, 1);
             }
+        },
+        
+        clear: (state) => {
+            state.items = [];
         }
     }
 })
 
 // Action creators are generated for each case reducer function
-export const { addProduct, moveProduct, removeByItemIndex, removeByProductId } = cartSlice.actions
+export const { addProduct, moveProduct, removeByItemIndex, removeByProductId, clear } = cartSlice.actions
 
 export default cartSlice.reducer

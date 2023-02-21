@@ -1,8 +1,9 @@
 import axios from "axios";
 import IProductDto from "../types/dto/IProductDto";
 import qs from 'qs'
+import host from "./host";
 
-const API_URL = "https://localhost:7264/api/";
+const API_URL = host() + "/api/";
 
 class ProductService {
   async getProducts(name?: string, types?:string, cases?:string) {

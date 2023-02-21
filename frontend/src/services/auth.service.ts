@@ -3,8 +3,9 @@ import axios from "axios";
 import { IAuthDto } from "../types/dto/request/IAuthDto";
 import IUser from "../types/IUser";
 import authHeader from "./auth-header";
+import host from "./host";
 
-const API_URL = "https://localhost:7264/api/";
+const API_URL = host() + "/api/";
 
 class AuthService {
   async login(login: string, password: string) {

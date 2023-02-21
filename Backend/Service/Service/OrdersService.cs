@@ -36,6 +36,7 @@ namespace Service.Service
         public async Task<OrderDto> CreateAsync(OrderRequestDto dto)
         {
             var entity = new OrderEntity { UserId = dto.UserId, Text = "", Price = 0 };
+            var itemsUnique = dto.ItemsIds.Distinct();
             
             foreach (var itemId in dto.ItemsIds)
             {
@@ -54,7 +55,7 @@ namespace Service.Service
             var orderProducts = new List<OrderProductEntity>();
             foreach (var itemId in dto.ItemsIds)
             {
-                var orderProduct = orderProducts.Find(x => x.Id == itemId);
+                var orderProduct = orderProducts.Find(x => x.ProductId == itemId);
 
                 if (orderProduct == null)
                     orderProducts.Add(new OrderProductEntity

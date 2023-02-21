@@ -10,14 +10,16 @@ import { useNavigate } from "react-router-dom";
 
 import type { RootState } from '../../redux/store'
 import { useSelector, useDispatch } from 'react-redux'
+import {clear } from '../../redux/cart-slice'
 import { RectButton } from "../buttons/buttons";
 
 import OrderService from "../../services/order.service";
 
 export default function ShoppingCart(props: any) {
     // redux
-    const cartItems = useSelector((state: RootState) => state.cart.items)
-    const user = useSelector((state: RootState) => state.user.user)
+    const cartItems = useSelector((state: RootState) => state.cart.items);
+    const user = useSelector((state: RootState) => state.user.user);
+    const dispatch = useDispatch();
     
     const navigate = useNavigate();
 
@@ -34,11 +36,12 @@ export default function ShoppingCart(props: any) {
 
         if (user) {
             OrderService.createOrder(user.id, itemsIds);
+            dispatch(clear());
         }
         else {
+            props.onClose();
             navigate("/login");
         }
-        
     }
 
     return (
