@@ -1,9 +1,7 @@
 import axios from "axios";
 import IProductDto from "../types/dto/IProductDto";
 import qs from 'qs'
-import host from "./host";
-
-const API_URL = host() + "/api/";
+import { API_URL } from "./host";
 
 class ProductService {
   async getProducts(name?: string, types?:string, cases?:string) {

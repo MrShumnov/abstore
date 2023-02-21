@@ -35,7 +35,7 @@ export default function Login(props: any) {
     
     const navigate = useNavigate();
 
-    if (user?.id) 
+    if (user) 
         navigate("/store");
 
     const validationSchema = () => {

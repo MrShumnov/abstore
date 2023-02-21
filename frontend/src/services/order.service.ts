@@ -1,10 +1,8 @@
 import axios from "axios";
 import authHeader from "./auth-header";
-import host from "./host";
+import { API_URL } from "./host";
 
 import { IOrderRequestDto } from "../types/dto/request/IOrderRequestDto";
-
-const API_URL = host() + "/api/";
 
 class OrderService {
   async createOrder(userId: number, itemsIds: number[]) {

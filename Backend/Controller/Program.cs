@@ -130,15 +130,15 @@ builder.Services.AddScoped<IUsersService, UsersService>();
 builder.Services.AddScoped<IOrdersService, OrdersService>();
 builder.Services.AddScoped<IProductsService, ProductsService>();
 
-//var listenPort = Environment.GetEnvironmentVariable("LISTENPORT");
-//builder.WebHost.ConfigureKestrel(options =>
-//{
-//    options.ListenAnyIP(int.Parse(listenPort)); // , listenOptions =>
-//                                                // {
-//                                                // listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
-//                                                // listenOptions.UseHttps();
-//                                                // }); 
-//});
+var listenPort = Environment.GetEnvironmentVariable("LISTENPORT");
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(int.Parse(listenPort)); // , listenOptions =>
+                                                // {
+                                                // listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
+                                                // listenOptions.UseHttps();
+                                                // }); 
+});
 
 var app = builder.Build();
 
