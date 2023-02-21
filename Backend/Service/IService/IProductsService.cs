@@ -1,10 +1,11 @@
 ﻿using Service.Dto;
+using Service.Dto.Filter;
 
 namespace Service.IService
 {
     public interface IProductsService
     {
-        Task<List<ProductDto>> GetFilteredAsync(bool? letter, bool? capital);
+        Task<List<ProductDto>> GetFilteredAsync(string? name, ProductTypeEnum[]? productTypes, ProductCaseEnum[]? productCases);
 
         Task<ProductDto?> GetByIdAsync(int id);
 

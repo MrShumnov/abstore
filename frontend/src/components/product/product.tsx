@@ -1,74 +1,76 @@
-import { Component, ReactNode } from "react";
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import './product.scss'
 import IProduct from "../../types/IProduct";
 import {RectButton, TextButton} from "../buttons/buttons";
 
+
 import MyText from "../text";
 
-type Props = {
-    product: IProduct
-}
+import type { RootState } from '../../redux/store'
+import { useSelector, useDispatch } from 'react-redux'
+import { addProduct, removeByProductId } from '../../redux/cart-slice'
 
-type State = {
-    qty: number 
-};
+export default function Product(props: any) {
+    // redux
+    const cartItems = useSelector((state: RootState) => state.cart.items)
+    const dispatch = useDispatch()
 
-export default class Product extends Component<Props, State> {
-    state = {
-        qty: 0
+    if (props.product.symbol === " ")
+        props.product.symbol = "_";
+
+    const Qty = () => {
+        return cartItems.filter((val: any) => val.id === props.product.id).length
     }
 
-    AddToCart() { this.setState({qty: 1}); }
+    const AddToCart = () => {
+        dispatch(addProduct(props.product));
+    }
 
-    Plus() { 
-        this.setState(prevState => {
-            return { qty: prevState.qty + 1 }
-        }); 
+    const Plus = () => {         
+        dispatch(addProduct(props.product));
     }    
 
-    Minus() { 
-        if (this.state.qty > 0)
-            this.setState(prevState => {
-                return { qty: prevState.qty - 1 }
-            }); 
+    const Minus = () => { 
+        if (Qty() > 0)
+            dispatch(removeByProductId(props.product.id));
     }   
 
-    render() {
-        return (
-            <Card className="product border border-2 rounded-0" >
-                <div className="symbol">
-                    {this.props.product.symbol}
-                </div>
+    return (
+        <Card className="product border border-2 rounded-0" >
+            <div className="symbol">
+                <MyText>{props.product.symbol}</MyText>
+            </div>
 
-                <Card.Body className="product-body">
-                    <Card.Text style={{fontFamily: "consolas"}}>
-                        {this.props.product.description}
-                    </Card.Text>
+            <Card.Body className="product-body">
+                <Card.Text className="description" style={{fontFamily: "consolas"}}>
+                    {props.product.description}
+                </Card.Text>
 
-                    <div className="sale">
-                        <MyText>${this.props.product.sale}</MyText>
-                    </div>
-
-                    <div className="price">
-                        <MyText>${this.props.product.price}</MyText>
-                    </div>
-                    
-                    {this.state.qty === 0 && 
-                        <RectButton text="+ Add to cart" onClick={() => this.AddToCart()}/>
+                <div className="lower-block">                        
+                    {Qty() === 0 && 
+                        <RectButton text="+ Add to cart" onClick={AddToCart}/>
                     }
                     
-                    {this.state.qty > 0 && 
+                    {Qty() > 0 && 
                         <var className="qty-changer">
-                            <TextButton text="-" onClick={() => this.Minus()}/>
-                            <var><MyText>{this.state.qty}</MyText></var>
-                            <TextButton text="+" onClick={() => this.Plus()}/>
+                            <TextButton text="-" onClick={Minus}/>
+                            <var><MyText>{Qty()}</MyText></var>
+                            <TextButton text="+" onClick={Plus}/>
                         </var>
                     }
 
-                </Card.Body>
-            </Card>
-        )
-    }     
+                    <div className="price-block">
+                        <div className="price">
+                            <MyText>${props.product.price}</MyText>
+                        </div>
+                        
+                        <div className="sale">
+                            <MyText>${props.product.sale}</MyText>
+                        </div>
+                    </div>
+                </div>
+            </Card.Body>
+        </Card>
+    )  
 }

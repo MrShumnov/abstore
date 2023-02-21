@@ -1,0 +1,32 @@
+.box-container {
+    font-family: consolas;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    /* removing default appearance */
+    -webkit-appearance: none;
+    appearance: none;
+
+    /* creating a custom design */
+    transition-duration: 0.2s;
+    border-radius: 0px;
+    border-style: solid;
+    border-width: 2px;
+    
+    width: 1em;
+    height: 1em;
+
+    margin-right: 0.5em;
+
+    &:checked{
+        background-color: black;
+        width: 2em;
+    }
+
+    &:hover{
+    }
+}

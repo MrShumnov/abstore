@@ -10,7 +10,7 @@ namespace Service.Dto
         [DataMember(Name = "user_id")]
         public int UserId { get; set; }
 
-        [DataMember(Name = "items")]
-        public List<ProductDto> Items { get; set; }
+        [DataMember(Name = "items_ids")]
+        public List<int> ItemsIds { get; set; }
     }
 }

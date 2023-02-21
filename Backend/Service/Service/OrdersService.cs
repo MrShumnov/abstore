@@ -37,11 +37,11 @@ namespace Service.Service
         {
             var entity = new OrderEntity { UserId = dto.UserId, Text = "", Price = 0 };
             
-            foreach (var item in dto.Items)
+            foreach (var itemId in dto.ItemsIds)
             {
-                var product = await _productsRepository.GetByIdAsync(item.Id);
+                var product = await _productsRepository.GetByIdAsync(itemId);
                 if (product == null)
-                    throw new ObjectNotFoundException($"Product with id {item.Id} not found");
+                    throw new ObjectNotFoundException($"Product with id {itemId} not found");
 
                 //orderProducts.Add(new OrderProductEntity { OrderId=})
 
@@ -52,15 +52,15 @@ namespace Service.Service
             var created = await _ordersRepository.AddAsync(entity);
 
             var orderProducts = new List<OrderProductEntity>();
-            foreach (var item in dto.Items)
+            foreach (var itemId in dto.ItemsIds)
             {
-                var orderProduct = orderProducts.Find(x => x.Id == item.Id);
+                var orderProduct = orderProducts.Find(x => x.Id == itemId);
 
                 if (orderProduct == null)
                     orderProducts.Add(new OrderProductEntity
                     {
                         OrderId = created.Id,
-                        ProductId = item.Id,
+                        ProductId = itemId,
                         Qty = 1
                     });
                 else

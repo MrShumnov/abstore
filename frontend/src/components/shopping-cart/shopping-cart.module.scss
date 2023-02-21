@@ -1,0 +1,50 @@
+.cart {
+    margin-bottom: 1em;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+.productsContainer {
+    padding: 0;
+    margin: 0;
+}
+
+.col {
+    padding: 0;
+    margin: 0;
+}
+
+.item {
+    margin-bottom: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.priceBlock {
+    margin: 0;  
+    margin-left: 5%;  
+    margin-bottom: 5%;  
+    display: flex;
+    flex-direction: row;
+
+    .sale {
+        font-size: 1.2em;
+        margin-right: 1%;
+    }
+    
+    .price {
+        text-decoration: line-through;
+        font-size: 0.8em;
+        color: gray;
+    }
+}
+
+.checkoutBlock {
+    margin-top: 10%;
+    margin-left: 5%;
+}

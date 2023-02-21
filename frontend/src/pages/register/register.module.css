@@ -1,0 +1,26 @@
+.page {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    height: 50em;
+}
+  
+.card {
+    padding: 1em;
+    font-family: consolas;
+    margin-top: 5em;
+    align-items: center;
+    justify-content: center;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+.alert {
+    font-size: 0.9em;
+}

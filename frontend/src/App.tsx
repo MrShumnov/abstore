@@ -6,20 +6,25 @@ import Navbar from './components/navbar';
 
 import Login from './pages/login';
 import Register from './pages/register';
-import Store from './pages/store/store';
+import {default as Store} from './pages/store/store';
+import Footer from './components/footer/footer';
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-      
-      <div>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/store" element={<Store/>} />
-        </Routes>
+      <div className="App-body">
+        <Navbar/>
+        
+        <div>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/store" element={<Store />} />
+          </Routes>
+        </div>
       </div>
+
+      <Footer/>
     </div>
   );
 }

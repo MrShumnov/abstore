@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Dto;
+using Service.Dto.Filter;
 using Service.Exceptions;
 using Service.IService;
 
@@ -22,9 +23,9 @@ namespace Controller.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IResult> Get([FromQuery] bool? letters, [FromQuery] bool? capital)
+        public async Task<IResult> Get([FromQuery] string? name, [FromQuery(Name = "type")] ProductTypeEnum[] productTypes, [FromQuery(Name = "case")] ProductCaseEnum[] productCases)
         {
-            var result = await _productsService.GetFilteredAsync(letters, capital);
+            var result = await _productsService.GetFilteredAsync(name, productTypes, productCases);
 
             return Results.Ok(result);
         }

@@ -22,3 +22,11 @@ export function TextButton(props: Props) {
         </button>
     )
 };
+
+export function RoundButton(props: any) {
+    return (
+        <button className='round-button' onClick={props.onClick}>
+            { props.children }
+        </button>
+    )
+};

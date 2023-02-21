@@ -8,6 +8,8 @@ using System.Linq.Expressions;
 using System.Collections.Generic;
 using Repository.Exceptions;
 using Repository.Repository;
+using Service.Dto.Filter;
+using System.Linq;
 
 namespace Service.Service
 {
@@ -66,14 +68,33 @@ namespace Service.Service
             return _mapper.Map<ProductDto>(removed);
         }
 
-        public async Task<List<ProductDto>> GetFilteredAsync(bool? letter, bool? capital)
+        public async Task<List<ProductDto>> GetFilteredAsync(string? name, ProductTypeEnum[]? productTypes, ProductCaseEnum[]? productCases)
         {
-            bool letterFilter = letter ?? false;
-            bool capitalFilter = capital ?? false;
+            Func<ProductEntity, bool> lettersFilter = p => true;
+            if (productTypes != null && productTypes.Length > 0)
+            {
+                if (productTypes.Contains(ProductTypeEnum.letters)
+                    && !productTypes.Contains(ProductTypeEnum.other))
+                    lettersFilter = p => char.IsLetter(p.Symbol);
+                if (!productTypes.Contains(ProductTypeEnum.letters)
+                    && productTypes.Contains(ProductTypeEnum.other))
+                    lettersFilter = p => !char.IsLetter(p.Symbol);
+            }
+
+            Func<ProductEntity, bool> caseFilter = p => true;
+            if (productCases != null && productCases.Length > 0)
+            {
+                if (productCases.Contains(ProductCaseEnum.lower)
+                    && !productCases.Contains(ProductCaseEnum.upper))
+                    caseFilter = p => !char.IsUpper(p.Symbol);
+                if (!productCases.Contains(ProductCaseEnum.lower)
+                    && productCases.Contains(ProductCaseEnum.upper))
+                    caseFilter = p => char.IsUpper(p.Symbol) || !char.IsLetter(p.Symbol);
+            }
 
             Expression<Func<ProductEntity, bool>> filter =
-                p => (letter == null) || (!(char.IsLetter(p.Symbol) ^ letterFilter) &&
-                    ((!letterFilter || capital == null) || !(char.IsUpper(p.Symbol) ^ capitalFilter)));
+                p => ((name == null) || name.Contains(p.Symbol)) && 
+                    lettersFilter(p) && caseFilter(p);
 
             // var entities = await _productsRepository.FindAsync(filter);
             var entities = await _productsRepository.GetAllAsync();

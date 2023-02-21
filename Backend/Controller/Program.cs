@@ -25,17 +25,17 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//var corsPolicy = "customCorsPolicy";
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy(name: corsPolicy,
-//                      builder =>
-//                      {
-//                          builder.AllowAnyOrigin();
-//                          builder.AllowAnyMethod();
-//                          builder.AllowAnyHeader();
-//                      });
-//});
+var corsPolicy = "customCorsPolicy";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: corsPolicy,
+                      builder =>
+                      {
+                          builder.AllowAnyOrigin();
+                          builder.AllowAnyMethod();
+                          builder.AllowAnyHeader();
+                      });
+});
 
 // Add services to the container.
 
@@ -130,15 +130,15 @@ builder.Services.AddScoped<IUsersService, UsersService>();
 builder.Services.AddScoped<IOrdersService, OrdersService>();
 builder.Services.AddScoped<IProductsService, ProductsService>();
 
-var listenPort = Environment.GetEnvironmentVariable("LISTENPORT");
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.ListenAnyIP(int.Parse(listenPort)); // , listenOptions =>
-                                                // {
-                                                // listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
-                                                // listenOptions.UseHttps();
-                                                // }); 
-});
+//var listenPort = Environment.GetEnvironmentVariable("LISTENPORT");
+//builder.WebHost.ConfigureKestrel(options =>
+//{
+//    options.ListenAnyIP(int.Parse(listenPort)); // , listenOptions =>
+//                                                // {
+//                                                // listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
+//                                                // listenOptions.UseHttps();
+//                                                // }); 
+//});
 
 var app = builder.Build();
 
@@ -155,7 +155,7 @@ app.Logger.LogInformation(connectionString);
     });
 //}
 
-// app.UseCors(corsPolicy);
+app.UseCors(corsPolicy);
 
 app.UseHttpsRedirection();
 

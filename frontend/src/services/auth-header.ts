@@ -4,9 +4,9 @@ export default function authHeader() {
   if (userStr)
     user = JSON.parse(userStr);
 
-  if (user && user.accessToken) {
-    return { Authorization: 'Bearer ' + user.accessToken, 'Access-Control-Allow-Origin': '*' }; 
+  if (user && user.token) {
+    return { Authorization: 'Bearer ' + user.token, 'Access-Control-Allow-Origin': '*' }; 
   } else {
-    return { Authorization: '', 'Access-Control-Allow-Origin': '*'  };
+    return { };
   }
 }

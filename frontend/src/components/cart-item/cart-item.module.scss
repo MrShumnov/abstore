@@ -1,0 +1,42 @@
+.product {
+    align-items: stretch;
+
+    .productBody {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        padding-right: 1em;
+    }
+
+    .symbol {
+        margin: 0;
+        font-size: 3em;
+    }
+
+    .priceBlock {
+        margin: 0;    
+        display: flex;
+        flex-direction: column;
+
+        .sale {
+            font-size: 1.2em;
+        }
+        
+        .price {
+            text-decoration: line-through;
+            font-size: 0.8em;
+            color: gray;
+        }
+    }
+}
+
+.movingBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}

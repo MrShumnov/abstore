@@ -6,9 +6,9 @@
     border-radius: 0px;
     border-style: solid;
 
-    padding: 3pt;
-    padding-left: 10pt;
-    padding-right: 10pt;
+    padding: 0.3em;
+    padding-left: 0.9em;
+    padding-right: 0.9em;
 }
 
 .rect-button:hover {
@@ -36,9 +36,32 @@
     padding-left: 0.5em;
     padding-right: 0.5em;
 
-    margin: 0.5em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
 
-.text-button:hover {
-    
+/* round button */
+
+.round-button {
+    width: 2.2em;
+    height: 2.2em;
+    transition-duration: 0.2s;
+    background: white;
+    color: black;
+    border-color: black;
+    border-radius: 50%;
+    border-style: solid;
+    margin-top: 1%;
+}
+
+.round-button:hover {
+    background: black;
+    color: white;
+    border-color: black;
+}
+
+.round-button:active {
+    background: black;
+    color: black;
+    border-color: black;
 }

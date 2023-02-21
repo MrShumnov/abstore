@@ -1,0 +1,58 @@
+.store-container {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    margin-top: 20px;
+    align-items:stretch;
+    
+    .filter {
+        width: 25%;
+        max-height: 25rem;
+        align-items: stretch;
+        margin-right: 60px;
+        margin-left: 20px;
+        padding: 0;
+        
+        .filter-body {
+            align-items: center;
+        }
+    
+        .search-form {
+            font-family: consolas;
+            transition-duration: 0.2s;
+            background: white;
+            color: black;
+            border-radius: 0px;
+            border-style: solid;
+            border-width: 2px;
+            margin: 0;
+            padding: 0.3em
+        }
+        .search-form:focus {
+            border-color: black;
+            box-shadow: none;
+        }
+    }
+
+    .products-container {
+        
+        max-width: 75%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    
+        .row {
+            display: flex;
+            flex-direction: row;
+            align-self: flex-start;
+        }
+        .col {
+            padding: 0;
+            margin: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            align-self: flex-start;
+        }
+    }
+}
