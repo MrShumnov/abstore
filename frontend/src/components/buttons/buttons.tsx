@@ -4,12 +4,15 @@ import MyText from "../text";
 
 interface Props {
     text: string,
-    onClick: () => void
+    onClick: () => void,
+    wrap?: boolean 
 }
 
 export function RectButton(props: Props) {
+    const wrap = props.wrap ? "normal" : "nowrap";
+
     return (
-        <button className='rect-button' onClick={props.onClick}>
+        <button className='rect-button' onClick={props.onClick} style={{whiteSpace: wrap}}>
             <MyText>{ props.text }</MyText>
         </button>
     )

@@ -1,8 +1,3 @@
-/*export default function host() {
-    // return "https://localhost:7264"
-
-    return "http://localhost/api/v1"
-    // return process.env.BACKEND_SERVER;
-}*/
-
-export const API_URL = "http://localhost/api/v1/";
+export const API_URL = "https://localhost:7264/api/"
+// export const API_URL = "/api/v1/";
+// export const API_URL = process.env.BACKEND_SERVER;

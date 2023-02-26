@@ -47,12 +47,19 @@ export const cartSlice = createSlice({
                 state.items.splice(index, 1);
         },
         
-        removeByProductId: (state, action: PayloadAction<number>) => {
-            let index = state.items.reverse().findIndex((val: any) => val.id === action.payload);
-            if (index !== -1) {
-                index = state.items.length - 1 - index;
-                state.items.splice(index, 1);
-            }
+        removeByProductId: (state, action: PayloadAction<number>) => { 
+            if (state.items.length > 0)
+                for (let i = state.items.length - 1; i >= 0; i--)
+                    if (state.items[i].id == action.payload) {
+                        state.items.splice(i, 1);
+                        break;
+                    }
+
+            //let index = state.items.reverse().findIndex((val: any) => val.id === action.payload);
+            //if (index !== -1) {
+            //    index = state.items.length - 1 - index;
+            //    state.items.splice(index, 1);
+            //}
         },
         
         clear: (state) => {

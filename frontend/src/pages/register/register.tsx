@@ -72,7 +72,7 @@ export default class Register extends Component<Props, State> {
     ).then(
       response => {
         this.setState({
-          message: response.data.message,
+          message: " Success! You can now log in ",
           successful: true
         });
       },
@@ -114,7 +114,7 @@ export default class Register extends Component<Props, State> {
                 <div>
                   <div className={styles.formGroup}>
                     <label htmlFor="username"> Username </label>
-                    <Field name="username" type="text" className="search-form" />
+                    <Field name="username" type="text" className="search-form border border-2 rounded-0" />
                     <ErrorMessage
                       name="username"
                       component="div"
@@ -124,7 +124,7 @@ export default class Register extends Component<Props, State> {
 
                   <div className={styles.formGroup}>
                     <label htmlFor="login"> Login </label>
-                    <Field name="login" type="login" className="search-form" />
+                    <Field name="login" type="login" className="search-form border border-2 rounded-0" />
                     <ErrorMessage
                       name="login"
                       component="div"
@@ -137,7 +137,7 @@ export default class Register extends Component<Props, State> {
                     <Field
                       name="password"
                       type="password"
-                      className="search-form"
+                      className="search-form border border-2 rounded-0"
                     />
                     <ErrorMessage
                       name="password"
@@ -156,7 +156,8 @@ export default class Register extends Component<Props, State> {
                 <div className="form-group">
                   <div
                     className={
-                      successful ? "alert alert-success" : "alert alert-danger"
+                      "search-form border border-2 rounded-0" +
+                      (successful ? "" : " mt-4")
                     }
                     role="alert"
                   >

@@ -7,12 +7,9 @@ import Card from 'react-bootstrap/Card';
 
 import type { RootState } from '../../redux/store'
 import { useSelector, useDispatch } from 'react-redux'
-import { addToken, addUserInfo, remove } from '../../redux/user-slice'
+import { addToken, addUserInfo } from '../../redux/user-slice'
 
 import AuthService from "../../services/auth.service";
-import IUser from "../../types/IUser";
-
-type Props = {};
 
 type State = {
     username: string,
@@ -64,8 +61,18 @@ export default function Login(props: any) {
                     navigate("/store");
                 })
             }
+            if (response.data.statusCode === 401) {
+                setState({
+                    loading: false,
+                    message: "Invalid password or username...",
+                    username: state.username,
+                    password: state.password
+                });
+            }
+
         },
         error => {
+            console.log(error);
             const resMessage =
             (error.response &&
                 error.response.data &&
@@ -100,7 +107,7 @@ export default function Login(props: any) {
                     <Form>
                     <div className={styles.formGroup}>
                         <label htmlFor="username">Username</label>
-                        <Field name="username" type="text" className="search-form" />
+                        <Field name="username" type="text" className="search-form border border-2 rounded-0" />
                         <ErrorMessage
                         name="username"
                         component="div"
@@ -110,7 +117,7 @@ export default function Login(props: any) {
 
                     <div className={styles.formGroup}>
                         <label htmlFor="password">Password</label>
-                        <Field name="password" type="password" className="search-form" />
+                        <Field name="password" type="password" className="search-form border border-2 rounded-0" />
                         <ErrorMessage
                         name="password"
                         component="div"
@@ -129,7 +136,7 @@ export default function Login(props: any) {
 
                     {message && (
                         <div className="form-group">
-                        <div className="alert alert-danger" role="alert">
+                        <div className="border border-2 rounded-0 mt-4" role="alert">
                             {message}
                         </div>
                         </div>

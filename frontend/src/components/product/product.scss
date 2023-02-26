@@ -1,54 +1,89 @@
 .product {
+    // width: fit-content;
     width: 18rem;
     min-height: 25.5em;
     max-height: 25.5em;
     align-items: center;
     padding: 0.2em;
-    
-    .product-body {
-        align-self: stretch;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+    margin: auto;
+}
 
-        .lower-block {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0;
-        }
-    }
+.product-mobile {
+    max-width: fit-content;
+    align-items: center;
+    margin: auto;
+}
 
-    .symbol {
-        font-size: 10em;
-    }
+.product-body {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-    .sale {
-        font-size: 1.6em;
-    }
-    
-    .price {
-        text-decoration: line-through;
-        font-size: 1em;
-        color: gray;
+.lower-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+.lower-block-mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
 
-        margin-top: 0em;
-        margin-bottom: 1em;
-        margin-right: 0.1em;
-    }
+.symbol {
+    font-size: 10em;
+}
+.symbol-mobile {
+    font-size: 7em;
+}
 
-    .description {
-        text-align: left;
-    }
+.sale {
+    font-size: 1.6em;
+}
 
-    .price-block {
-        display: flex;
-        margin-left: auto;
-        align-items: center;
-        padding: 0;
-        margin: 0;
-    }
+.price {
+    text-decoration: line-through;
+    font-size: 1em;
+    color: gray;
+
+    margin-top: 0em;
+    margin-bottom: 1em;
+    margin-right: 0.1em;
+}
+.price-mobile {
+    text-decoration: line-through;
+    font-size: 1em;
+    color: gray;
+
+    margin-top: 0em;
+    margin-bottom: 1em;
+    margin-right: 0.1em;
+}
+
+.description {
+    text-align: left;
+}
+
+.price-block {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    margin-left: 1em;
+}
+.price-block-mobile {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    padding: 0;
+    margin: 0 0 0.5em 0;
 }
 
 .qty-changer {
