@@ -24,16 +24,18 @@ services:
     deploy:
       replicas: 2
 
-  # frontend:
-  #   build: ./frontend
-  #   ports:
-  #     - 3000:3000
-  #   environment:
-  #     - BACKEND_SERVER=http://backend
-  #   networks:
-  #     - proxy-abstore-network
-  #   stdin_open: true
-  #   tty: true
+  frontend:
+    build: 
+      ./frontend
+    ports:
+      - 3000:3000
+    environment:
+      - REACT_APP_BACKEND_SERVER=/api/v1/
+      - NODE_ENV=production
+    networks:
+      - proxy-abstore-network
+    stdin_open: true
+    tty: true
     
   db:
     image: postgres
